@@ -278,18 +278,18 @@ def main():
     
         st.subheader('Abstract')
         st.write('One of the most important steps toward a lowcarbon economy and sustainable 
-energy future is the switch to electric vehicles (EVs). However, because of their high charging 
-requirements, the broad adoption of EVs presents a risk to the reliability of the electrical 
-system. Strategies for scheduling charging and discharging that work are essential to reducing 
-the negative grid effects of EVs.
-This paper explores two strategies for intelligent charging and discharging scheduling: Qlearning and Long Short-Term Memory (LSTM) coupled with Integer Linear Programming 
-(ILP). The LSTM-ILP approach uses ILP to optimize the charging and discharging schedules 
-while utilizing deep learning to anticipate energy consumption. On the other hand, the Qlearning method makes use of reinforcement learning to ascertain the best course of action 
-for EVs in relation to their state-of-charge (SOC) and the demand on the grid.
-The outcomes of the simulation show that both strategies are successful in lowering the peakto-average ratio of the grid and lessening the influence of EV charging demands. Comparative 
-assessments draw attention to the advantages and disadvantages of each approach, offering 
-suggestions for further study and real-world application.
-Key words: Q-Learning, LSTM-ILP, Grid')
+        energy future is the switch to electric vehicles (EVs). However, because of their high charging 
+        requirements, the broad adoption of EVs presents a risk to the reliability of the electrical 
+        system. Strategies for scheduling charging and discharging that work are essential to reducing 
+        the negative grid effects of EVs.
+        This paper explores two strategies for intelligent charging and discharging scheduling: Qlearning and Long Short-Term Memory (LSTM) coupled with Integer Linear Programming 
+        (ILP). The LSTM-ILP approach uses ILP to optimize the charging and discharging schedules 
+        while utilizing deep learning to anticipate energy consumption. On the other hand, the Qlearning method makes use of reinforcement learning to ascertain the best course of action 
+        for EVs in relation to their state-of-charge (SOC) and the demand on the grid.
+        The outcomes of the simulation show that both strategies are successful in lowering the peakto-average ratio of the grid and lessening the influence of EV charging demands. Comparative 
+        assessments draw attention to the advantages and disadvantages of each approach, offering 
+        suggestions for further study and real-world application.
+        Key words: Q-Learning, LSTM-ILP, Grid')
         
     
         st.subheader('1. Introduction')

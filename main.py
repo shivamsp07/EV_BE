@@ -472,7 +472,7 @@ def main():
         st.write("[8] Shuai Li, Yanan Li, Jie Zhang, Lijun Zhang, Jingjing Zhang, Wenjuan Zhang, Shuai Li, Ruixi Zhang, Distributed Transformer Joint Optimization Method using Multi-Agent Deep Reinforcement Learning for Electric Vehicle Charging. IEEE Transactions on Industrial Informatics - 2021.")
         st.write("[9] Felix Tuchnitz, Niklas Ebell, Jonas Schlund, Marco Pruckner Development and Evaluation of a Smart Charging Strategy for an Electric Vehicle Fleet Based on Reinforcement Learning. Applied Energy, ISSN: 0306- 2619, 2021. http://dx.doi.org/10.1016/j.apenergy.2020.116382")
         st.write("[10] Da Silva, F.L., Nishida, C.E., Roijers, D.M. and Costa, A.H.R., 2019. Coordination of electric vehicle charging through multiagent reinforcement learning. IEEE Transactions on Smart Grid, 11(3), pp.2347-2356.")
-        st.write("[11] Hao, X., Chen, Y., Wang, H., Wang, H., Meng, Y. and Gu, Q., 2023. A V2G-oriented')
+        st.write("[11] Hao, X., Chen, Y., Wang, H., Wang, H., Meng, Y. and Gu, Q., 2023. A V2G-oriented")
 
 
 

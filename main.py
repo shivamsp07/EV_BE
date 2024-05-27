@@ -270,8 +270,60 @@ def main():
 
     elif option == 'Report':
         st.title('Report Option')
-        # Add your report content here
-        st.write('This is the report content.')
+
+        # Adding report content
+        st.header('A Smart Charging and Discharging Scheduling Strategy for the Electric Vehicle')
+        st.write('**Authors:** Dr. Archana Y. Chaudhari, Ved Inamdar, Shivam Pawar, Devansh Kariya, Rajat Parate.')
+        st.write('**Affiliation:** Dept. of Information Technology, Dr. D. Y. Patil Institute of Technology, Pimpri, Pune Maharashtra, India.')
+    
+        st.subheader('Abstract')
+        st.write('One of the most important steps toward a low-carbon economy and sustainable energy future is the switch to electric vehicles (EVs). However, because of their high charging requirements, the broad adoption of EVs presents a risk to the reliability of the electrical system. Strategies for scheduling charging and discharging that work are essential to reducing the negative grid effects of EVs.')
+        st.write('This paper explores two strategies for intelligent charging and discharging scheduling: Q-learning and Long Short-Term Memory (LSTM) coupled with Integer Linear Programming (ILP). The LSTM-ILP approach uses ILP to optimize the charging and discharging schedules while utilizing deep learning to anticipate energy consumption. On the other hand, the Q-learning method makes use of reinforcement learning to ascertain the best course of action for EVs in relation to their state-of-charge (SOC) and the demand on the grid.')
+        st.write('The outcomes of the simulation show that both strategies are successful in lowering the peak-to-average ratio of the grid and lessening the influence of EV charging demands. Comparative assessments draw attention to the advantages and disadvantages of each approach, offering suggestions for further study and real-world application.')
+    
+        st.subheader('1. Introduction')
+        st.write('The transition towards electric vehicles (EVs) is a critical part of the shift to a low-carbon economy and sustainable energy future. Governments and international bodies like the International Energy Agency (IEA) have set ambitious targets, estimating 30% of all vehicles to be electric by 2030. These new electric vehicles will need to be charged, mostly around 5-6 PM, which creates a high load spike on the grid. At 10% market penetration of EVs, an increase in peak load demand is estimated to be around 18%, and much higher for higher levels of market penetration. However, the ability of EV batteries to discharge energy back to the grid provides benefits like peak load shaving, frequency regulation, spinning reserves, and improved grid stability and efficiency.')
+        st.write('The concept of vehicle-to-grid (V2G), first proposed by Amory Lovins in 1995, aims to harness the bidirectional energy flow capabilities of EVs to improve grid operations through smart charging and discharging control strategies. Currently, price-based demand response schemes like real-time pricing, time-of-use tariffs and dynamic pricing are the main methods explored to incentivize EVs to participate in V2G. However, these methods face challenges like guaranteeing overall system optimality while respecting EV flexibility constraints, accounting for EV randomness and uncertainty, avoiding excessive grid fluctuations due to frequent price changes, and ensuring scalability as EV numbers increase.')
+        st.write('This work aims to develop a novel smart charging/discharging scheduling strategy for EVs participating in V2G that addresses the above limitations. By combining Long Short-Term Memory (LSTM) with Integer Linear Programming (ILP), and Q-learning, the proposed strategy aims to reduce peak-to-average ratio (PAR) of grid load through effective peak shaving and valley filling, minimizing EV charging costs for users while respecting their mobility needs, and ensuring grid-EV coordination scalability - all while maintaining system robustness to uncertainties and increasing EV penetration levels.')
+    
+        st.subheader('2. Related Work')
+        st.write('In recent years, researchers have been actively exploring innovative strategies to optimize EV charging schedules. Several methodologies and their associated advantages and limitations are reviewed. For example, Yanyu Zhang and colleagues (2023) presented a cooperative EV charging scheduling strategy based on double deep Q-network and prioritized experience replay. Their approach utilizes deep reinforcement learning to address the EV charging scheduling problem, achieving collaborative scheduling among EVs and reducing charging costs. However, it falls short in considering the coordination of renewable energy systems and transformer loads.')
+        st.write('Other notable contributions include Shuai Li and co-authors who proposed a Distributed Transformer Joint Optimization Method using Multi-Agent Deep Reinforcement Learning for EV Charging. This approach focuses on coordinating EV charging while safeguarding user privacy and reducing communication equipment deployment costs. Nevertheless, it neglects renewable energy integration and the challenge of reward sparsity in learning scenarios.')
+        st.write('Another example is the work of Lina Ren and Mingming Yuan (2023), briefly mentioned but lacking details on their electric vehicle charging and discharging scheduling strategy.')
+    
+        st.subheader('3. System Model')
+        st.write('The proposed plan is predicated on several assumptions: all EVs are the same, there is always enough capacity to supply any amount of power into the V2G service, the base energy demand profile is the same for every day of the year but varies hourly, and the presence of EVs does not change Alberta\'s base load. Fig. 1 depicts the demand load for Alberta. Every hour, either 25%, 50%, or 75% of EVs take part. Every hour, the degree of involvement is known at the outset. At 5 PM, when every EV\'s SOC reaches 30% on average with a 10% standard deviation, the V2G service begins. EVs can charge, discharge, or do nothing between 5 PM and 3 AM as long as they use the V2G service. Seventy-five percent of EVs use the V2G service starting at 3 AM. At 8 AM, the V2G service terminates.')
+        st.image('data:image/png;base64,<your_image_data>', caption='Fig. 1. Visualization of the data set used')
+    
+        st.subheader('3.1 LSTM-ILP')
+        st.write('LSTM is a type of recurrent neural network (RNN) designed to address issues like gradient explosion or disappearance commonly found in traditional RNNs. It features interconnected neuron layers with memory cells, capable of retaining information from previous time steps and transmitting it forward, making it suitable for time-related tasks.')
+        st.write('**LSTM Design:** Two hidden layers with 36 nodes each. Inputs: Grid base load (fbase), collective EV charging demand load (fcharging), discharge available load (fdischarge), and large grid electricity price (R). Outputs: 24-hour electricity price (r).')
+        st.image('data:image/png;base64,<your_image_data>', caption='Fig. 2. LSTM-ILP Model')
+    
+        st.subheader('3.2 Linear Programming (LP)')
+        st.write('The goal of linear programming (LP) is to maximize choices within linear constraints. Typically, this process consists of three stages: issue analysis, objective function establishment, and variable limitation determination.')
+        st.write('**Optimization Process:**')
+        st.write('- Decision Variables: Charging and discharging power.')
+        st.write('- Objective Function: Minimize peak-to-valley grid load difference and EV charging and discharging costs.')
+        st.write('- Constraints: Ensure safety and technical feasibility.')
+    
+        st.subheader('3.3 Improved Linear Programming (ILP)')
+        st.write('ILP enhances LP by subsidizing electricity prices for EVs participating in V2G, aiming to address rapid grid load changes more effectively.')
+        st.write('**Improvement Process:**')
+        st.write('- Redistribute chargeable and dischargeable loads if the absolute difference between charging and discharging electricity prices is less than a threshold.')
+        st.write('- Incorporate a new constraint to ensure load redistribution.')
+        st.write('- Return loss incurred by EV owners as a subsidy, also fed back to LSTM as part of its loss function.')
+    
+        st.subheader('3.4 Q-Learning')
+        st.write('A Markov Decision Process (MDP) temporal-difference learning issue is suggested to be derived from a multi-objective, multi-agent cooperative game minimization problem. Traditionally, reinforcement learning involves an agent interacting with its surroundings and choosing behaviors in states that will result in rewards, with the goal of maximizing the total of all future rewards.')
+        st.image('data:image/png;base64,<your_image_data>', caption='Fig. 3. Traditional Q-learning')
+        st.write('This figure illustrates the classic Q-learning process, where the agent engages with the environment by acting in various states and gaining rewards. By updating the Q-values, or projected future rewards, for each state-action combination, the objective is to develop an optimal policy that maximizes the cumulative reward over time.')
+    
+        st.write('The proposed algorithm initializes Q-values for all state-action pairs and iteratively updates them for each episode. Actions are chosen using an ε-greedy strategy to balance exploration and exploitation. Rewards and next states are observed, and Q-values are updated accordingly. The algorithm continues until the end of the V2G service.')
+    
+        st.image('data:image/png;base64,<your_image_data>', caption='Fig. 4. Multi-Agent Q-Learning')
+        st.write('This figure illustrates the multi-agent cooperative reinforcement learning configuration utilized in the suggested Q-learning method. In this scenario, a number of agents (EVs) work toward the same goal (keeping SOC and minimizing peak-to-average ratio) and are rewarded for it.')
+
 
 
 if __name__ == "__main__":

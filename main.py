@@ -207,7 +207,7 @@ def display_additional_output(option):
 
 def main():
     st.sidebar.title('Options')
-    option = st.sidebar.selectbox('', ['Data', 'LSTM', 'Q Learning', 'Comparison', 'Report'])
+    option = st.sidebar.selectbox('', ['Data', 'LSTM', 'Q Learning', 'Report'])
 
     if option == 'Data':
         display_dataset()

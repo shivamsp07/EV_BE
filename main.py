@@ -6,6 +6,7 @@ import os
 # Define function to display dataset
 def display_dataset():
     st.subheader('Dataset')
+    st.title('Smart scheduling strategy for charging and discharging of the electric vehicle')
     dataset_path = "AESO_2020_demand_price.csv"
     if os.path.exists(dataset_path):
         df = pd.read_csv(dataset_path)
@@ -17,7 +18,7 @@ def display_dataset():
 # Define function to display additional output for LSTM and Q Learning
 def display_additional_output(option):
     if option == 'LSTM':
-        st.title('Smart scheduling strategy for charging of the electric vehicle')
+        st.title('Smart scheduling strategy for charging and discharging of the electric vehicle')
         st.subheader('LSTM Code')
         with open('LSTMW.py', 'r') as file:
             code = file.read()
@@ -73,51 +74,6 @@ def display_additional_output(option):
         st.image('DM.LSTM.jpg')
         st.subheader('Model Loss')
         st.image('ML.LSTM.jpg')
-
-    elif option == 'Comparison':
-        st.title('Smart scheduling strategy for charging of the electric vehicle')
-        st.subheader('Comparison Code')
-        with open('simulation.py', 'r') as file:
-            code = file.read()
-        st.code(code, language='python')
-
-        st.subheader('Comparison Output')
-        q_learning_output = """
-        Charging Schedule:
-        Hour 17:00 - 18:00: 4 EVs charging
-        Hour 20:00 - 21:00: 4 EVs charging
-        Hour 21:00 - 22:00: 3 EVs charging
-        Hour 22:00 - 23:00: 3 EVs charging
-        Hour 1:00 - 2:00: 3 EVs charging
-        Hour 18:00 - 19:00: 1 EVs charging
-        Hour 19:00 - 20:00: 4 EVs charging
-        Hour 3:00 - 4:00: 1 EVs charging
-        Hour 6:00 - 7:00: 2 EVs charging
-        Hour 23:00 - 24:00: 1 EVs charging
-        Hour 4:00 - 5:00: 2 EVs charging
-        Hour 7:00 - 8:00: 4 EVs charging
-        Hour 0:00 - 1:00: 2 EVs charging
-        Hour 5:00 - 6:00: 2 EVs charging
-
-        Discharging Schedule:
-        Hour 0:00 - 1:00: 2 EVs discharging
-        Hour 17:00 - 18:00: 2 EVs discharging
-        Hour 20:00 - 21:00: 3 EVs discharging
-        Hour 23:00 - 24:00: 4 EVs discharging
-        Hour 2:00 - 3:00: 3 EVs discharging
-        Hour 5:00 - 6:00: 5 EVs discharging
-        Hour 22:00 - 23:00: 4 EVs discharging
-        Hour 3:00 - 4:00: 5 EVs discharging
-        Hour 21:00 - 22:00: 4 EVs discharging
-        Hour 6:00 - 7:00: 4 EVs discharging
-        Hour 18:00 - 19:00: 4 EVs discharging
-        Hour 1:00 - 2:00: 2 EVs discharging
-        Hour 4:00 - 5:00: 4 EVs discharging
-        Hour 7:00 - 8:00: 1 EVs discharging
-        """
-        st.code(q_learning_output, language='text')
-        st.subheader('Comparison Output')
-        st.image('QL.jpg')
 
     elif option == 'Q Learning':
         st.title('Smart scheduling strategy for charging of the electric vehicle')
@@ -246,7 +202,7 @@ def display_additional_output(option):
                         """
         st.code(simulation_summary, language='text')
         st.subheader('Q Learning Output')
-        st.image('QL.jpg')
+        st.image('Q.OT.jpg')
 
 
 def main():
@@ -260,9 +216,6 @@ def main():
         st.title('LSTM Option')
         display_additional_output(option)
 
-    elif option == 'Comparison':
-        st.title('Comparison Option')
-        display_additional_output(option)
 
     elif option == 'Q Learning':
         st.title('Q Learning Option')
